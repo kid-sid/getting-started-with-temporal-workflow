@@ -1,0 +1,35 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Traces (downloaded workflow logs)
+traces/
+
+# Node
+agentex-ui/node_modules/
+agentex-ui/.next/
+agentex-ui/.npm-cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
+
+# MCP
+.mcp_memory.json

@@ -1,0 +1,45 @@
+agent:
+  name: url-summarizer-temporal
+  acp_type: async
+  description: >
+    Give it a URL and it scrapes the page and returns a concise summary.
+    Collects URLs in batches of 2, then scrapes and summarizes them together.
+  temporal:
+    enabled: true
+    workflows:
+      - name: url-summarizer-temporal
+        queue_name: url_summarizer_temporal_queue
+  credentials: []
+  env:
+    OPENAI_API_KEY: ""   # Fill in your key here
+
+build:
+  context:
+    root: ./
+    include_paths:
+      - .
+    dockerfile: Dockerfile
+    dockerignore: .dockerignore
+
+local_development:
+  agent:
+    port: 8010
+    host_address: host.docker.internal
+  paths:
+    acp: project/acp.py
+    worker: project/run_worker.py
+
+deployment:
+  image:
+    repository: ""
+    tag: "latest"
+  imagePullSecrets: []
+  global:
+    replicaCount: 1
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "1Gi"
+      limits:
+        cpu: "1000m"
+        memory: "2Gi"

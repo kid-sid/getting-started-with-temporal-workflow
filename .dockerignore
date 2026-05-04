@@ -1,0 +1,25 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Env / secrets
+.env
+.env.*
+
+# Downloaded traces
+traces/
+
+# UI (not needed in the agent image)
+agentex-ui/
+
+# Git / tooling
+.git/
+.gitignore
+.claude/
+.mcp_memory.json
+
+# OS
+.DS_Store
+Thumbs.db
